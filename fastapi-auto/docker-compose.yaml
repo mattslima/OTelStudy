@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  myapp:
+    build: .
+    container_name: app2
+    ports:
+      - "8001:8001"
+    environment:
+      - OTEL_TRACES_EXPORTER=otlp
+      - OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - OTEL_SERVICE_NAME=fastapi-app2
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=fastapi-app2,service.version=1.0
+      - OTEL_PYTHON_LOG_CORRELATION=true
+      - OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+    networks:
+      - fastapi-app_default
+
+networks:
+  fastapi-app_default:
+    external: true
