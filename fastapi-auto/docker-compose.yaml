@@ -3,7 +3,7 @@ version: '3.8'
 services:
   myapp:
     build: .
-    container_name: app2
+    container_name: fastapi-app2
     ports:
       - "8001:8001"
     environment:
