@@ -4,9 +4,11 @@ services:
     container_name: fastapi-app
     ports:
       - "8000:8000"
-    depends_on:
-      - otel-collector
     environment:
       - OTEL_SERVICE_NAME=fastapi-app
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
-
+    networks:
+      - observabilidade
+networks:
+  observabilidade: 
+    external: true

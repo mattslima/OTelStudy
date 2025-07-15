@@ -19,24 +19,35 @@ Este repositório demonstra duas abordagens para instrumentar aplicações FastA
 └── locust/         # Locust para testes de carga e gerar dados para nosso dashboard
 `````
 
-## 1️⃣ fastapi-app — Instrumentação Manual
+Dentro de cada pasta tem um docker-compose.yaml para subir a aplicação
 
-### 🔹 Descrição
+##  Fastapi-app — Instrumentação Manual
+
+### Descrição
 Aplicação FastAPI com instrumentação feita diretamente no código-fonte usando os SDKs do OpenTelemetry.
 
-### 🔹 Destaques
+### Destaques
 - Instrumentação de código com `opentelemetry-sdk`.
 - Exportação de métricas para Prometheus.
 - Exportação de traces para Jaeger.
 - Rota de exemplo: `GET /`.
 
-### 🔹 Componentes
+### Componentes
 - `app.py`: aplicação com middleware e métricas instrumentadas.
 - `otel-collector-config.yaml`: configuração do OTEL Collector.
 - `prometheus.yml`: scrape config do Prometheus.
 
 
+##  Fastapi-auto — Instrumentação Automatica
 
+### Descrição
+Aplicação FastAPI com instrumentação feita diretamente no código-fonte usando os SDKs do OpenTelemetry.
+
+### Destaques
+- Instrumentação de código com `opentelemetry-sdk`.
+- Exportação de métricas para Prometheus.
+- Exportação de traces para Jaeger.
+- Rota de exemplo: `GET /`.
 
 ## 📊 Acessos rápidos
 Jaeger: http://localhost:16686

@@ -6,6 +6,8 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - observabilidade
 
   grafana:
     image: grafana/grafana-oss:latest
@@ -16,6 +18,8 @@ services:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+    networks:
+      - observabilidade
 
   jaeger:
     image: jaegertracing/all-in-one:1.56
@@ -24,6 +28,8 @@ services:
       - COLLECTOR_OTLP_ENABLED=true
     ports:
       - "16686:16686"
+    networks:
+      - observabilidade
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:latest
@@ -36,5 +42,10 @@ services:
       - "8889:8889" 
       - "4317:4317"  
       - "4318:4318"
+    networks:
+      - observabilidade
 volumes:
   grafana-storage:
+networks:
+  observabilidade: 
+    external: true
